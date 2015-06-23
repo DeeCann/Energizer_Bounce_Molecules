@@ -1,0 +1,444 @@
+fileFormatVersion: 2
+guid: 7af538fbf56be43948ad72c3640e72e9
+timeCreated: 1435094179
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: LEGO-CORNER4
+    21300002: LEGO-CORNER3
+    21300004: LEGO-CORNER2
+    21300006: LEGO-CORNER1
+    21300008: LEGO-FRAME1
+    21300010: LEGO-THIN3
+    21300012: LEGO-THIN1
+    21300014: LEGO-RECTANGLE2
+    21300016: LEGO-RECTANGLE1
+    21300018: LEGO-FRAME4
+    21300020: LEGO-FRAME3
+    21300022: LEGO-FRAME2
+    21300024: LEGO-RECTANGLE5
+    21300026: LEGO-RECTANGLE4
+    21300028: LEGO-RECTANGLE3
+    21300030: SHARPER-HEXAGON
+    21300032: SCISSORS
+    21300034: WOODEN-RULER
+    21300036: ERASER
+    21300038: WOODEN-DICE
+    21300040: CAR
+    21300042: PLANE
+    21300044: ROLLING-BAND
+    21300046: CLIPS-BOX
+    21300048: RUBBERS-TRANSPARENT-BOX
+    21300050: TAPE-LONG
+    21300052: TAPE-SHORT
+    21300054: WOODEN-PUSHPINSBOX
+    21300056: SHARPER-CIRCLE
+    21300058: SHARPER-RECTANGLE
+    21300060: LEGO-THIN2
+    21300062: LEGO-SIDE1
+    21300064: LEGO-SIDE2
+    21300066: LEGO-SIDE3
+    21300068: WOODEN-TRAIN
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: 4
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: 0
+    aniso: 0
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 5
+  buildTargetSettings:
+  - buildTarget: iPhone
+    maxTextureSize: 1024
+    textureFormat: 4
+    compressionQuality: 50
+  spriteSheet:
+    sprites:
+    - name: LEGO-CORNER4
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 954
+        width: 69
+        height: 70
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LEGO-CORNER3
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 954
+        width: 67
+        height: 70
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LEGO-CORNER2
+      rect:
+        serializedVersion: 2
+        x: 491
+        y: 954
+        width: 69
+        height: 69
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LEGO-CORNER1
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 953
+        width: 69
+        height: 70
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LEGO-FRAME1
+      rect:
+        serializedVersion: 2
+        x: 707
+        y: 940
+        width: 70
+        height: 70
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LEGO-THIN3
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 829
+        width: 35
+        height: 103
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LEGO-THIN1
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 830
+        width: 35
+        height: 103
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LEGO-RECTANGLE2
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 793
+        width: 69
+        height: 138
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LEGO-RECTANGLE1
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 793
+        width: 69
+        height: 138
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LEGO-FRAME4
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 850
+        width: 70
+        height: 70
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LEGO-FRAME3
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 850
+        width: 70
+        height: 70
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LEGO-FRAME2
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 850
+        width: 70
+        height: 70
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LEGO-RECTANGLE5
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 688
+        width: 69
+        height: 138
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LEGO-RECTANGLE4
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 647
+        width: 69
+        height: 138
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LEGO-RECTANGLE3
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 647
+        width: 69
+        height: 138
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SHARPER-HEXAGON
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 699
+        width: 133
+        height: 117
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SCISSORS
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 246
+        width: 444
+        height: 445
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: WOODEN-RULER
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 171
+        width: 104
+        height: 853
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ERASER
+      rect:
+        serializedVersion: 2
+        x: 757
+        y: 15
+        width: 68
+        height: 182
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: WOODEN-DICE
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 49
+        width: 111
+        height: 113
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CAR
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 19
+        width: 191
+        height: 328
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PLANE
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 0
+        width: 413
+        height: 238
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: ROLLING-BAND
+      rect:
+        serializedVersion: 2
+        x: 833
+        y: 0
+        width: 191
+        height: 319
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CLIPS-BOX
+      rect:
+        serializedVersion: 2
+        x: 863
+        y: 319
+        width: 161
+        height: 160
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: RUBBERS-TRANSPARENT-BOX
+      rect:
+        serializedVersion: 2
+        x: 790
+        y: 479
+        width: 158
+        height: 160
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TAPE-LONG
+      rect:
+        serializedVersion: 2
+        x: 951
+        y: 509
+        width: 73
+        height: 515
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TAPE-SHORT
+      rect:
+        serializedVersion: 2
+        x: 877
+        y: 692
+        width: 74
+        height: 332
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: WOODEN-PUSHPINSBOX
+      rect:
+        serializedVersion: 2
+        x: 718
+        y: 705
+        width: 159
+        height: 160
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SHARPER-CIRCLE
+      rect:
+        serializedVersion: 2
+        x: 601
+        y: 699
+        width: 117
+        height: 117
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: SHARPER-RECTANGLE
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 698
+        width: 78
+        height: 117
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LEGO-THIN2
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 829
+        width: 35
+        height: 103
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LEGO-SIDE1
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 934
+        width: 78
+        height: 90
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LEGO-SIDE2
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 934
+        width: 78
+        height: 90
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LEGO-SIDE3
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 934
+        width: 76
+        height: 90
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: WOODEN-TRAIN
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 348
+        width: 197
+        height: 250
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
