@@ -8,29 +8,37 @@ public class Molecule : MonoBehaviour {
 	private float _decreaseVelocityByFactor = 0;
 	private bool _decreaseVelocityByMaterial = false;
 
-	private static Molecule _instance = null;
-	public static Molecule Instance {
-        get {
-            if (_instance == null)
-				_instance = GameObject.FindObjectOfType(typeof(Molecule)) as Molecule;
-
-            return _instance;
-        }
-    }
+//	private static Molecule _instance = null;
+//	public static Molecule Instance {
+//        get {
+//            if (_instance == null)
+//				_instance = GameObject.FindObjectOfType(typeof(Molecule)) as Molecule;
+//
+//            return _instance;
+//        }
+//    }
 
     void Awake() {
-        _instance = this;
+        //_instance = this;
 
 		_moleculeAnimator = GetComponent<Animator>();
 
 		_randomBlickTime = Random.Range(3, 6);
+
+
     }
 
 	void Start() {
 		StartCoroutine(RandomBlick());
+
+		_decreaseVelocityByMaterial = false;
+		GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+		GetComponent<Rigidbody2D>().isKinematic = true;
+		GetComponent<Rigidbody2D>().angularVelocity = 0;
 	}
 
 	void FixedUpdate() {
+		Debug.Log(GetComponent<Rigidbody2D>().angularVelocity);
 		if(Mathf.Abs( GetComponent<Rigidbody2D>().angularVelocity) > 0)
 			GetComponent<Rigidbody2D>().angularVelocity = Mathf.Lerp(GetComponent<Rigidbody2D>().angularVelocity, 0, Time.deltaTime * 2);
 	}

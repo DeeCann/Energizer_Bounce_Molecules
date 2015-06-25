@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 public class InputEventHandler : MonoBehaviour {
 	public static bool _isStartTouchAction = false;
@@ -9,7 +10,15 @@ public class InputEventHandler : MonoBehaviour {
 	private static Vector2 _endTouchPosition = Vector2.zero;
 
 	void Update () {
+
+
 		if(Input.GetMouseButtonDown(0)) {
+			if(EventSystem.current.IsPointerOverGameObject(0) || EventSystem.current.IsPointerOverGameObject(1))
+				return;
+			
+			if((Application.platform == RuntimePlatform.OSXEditor || Application.platform == RuntimePlatform.WindowsEditor) && EventSystem.current.IsPointerOverGameObject(-1))
+				return;
+			Debug.Log("down");
 			_startTouchPosition = Camera.main.ScreenToWorldPoint( Input.mousePosition );
 			_isStartTouchAction = true;
 		}
@@ -19,10 +28,17 @@ public class InputEventHandler : MonoBehaviour {
 		}
 
 		if(Input.GetMouseButtonUp(0)) {
+			if(EventSystem.current.IsPointerOverGameObject(0) || EventSystem.current.IsPointerOverGameObject(1))
+				return;
+			
+			if((Application.platform == RuntimePlatform.OSXEditor || Application.platform == RuntimePlatform.WindowsEditor) && EventSystem.current.IsPointerOverGameObject(-1))
+				return;
+			Debug.Log("up");
 			_endTouchPosition = Camera.main.ScreenToWorldPoint( Input.mousePosition );
 			_isStartTouchAction = false;
 			_isEndTouchAction = true;
 		}
+
 	}
 
 	public static Vector2 StartTouchPosition
