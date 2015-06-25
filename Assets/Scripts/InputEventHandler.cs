@@ -9,31 +9,33 @@ public class InputEventHandler : MonoBehaviour {
 	private static Vector2 _currentTouchPosition = Vector2.zero;
 	private static Vector2 _endTouchPosition = Vector2.zero;
 
-	void Update () {
+	void Awake() {
+		_isStartTouchAction = false;
+		_isEndTouchAction = false;
 
+		_startTouchPosition = Vector2.zero;
+		_currentTouchPosition = Vector2.zero;
+		_endTouchPosition = Vector2.zero;
+	}
+
+
+	void Update () {
+		if(EventSystem.current.IsPointerOverGameObject(0) || EventSystem.current.IsPointerOverGameObject(1))
+			return;
+		
+		if((Application.platform == RuntimePlatform.OSXEditor || Application.platform == RuntimePlatform.WindowsEditor) && EventSystem.current.IsPointerOverGameObject(-1))
+			return;
 
 		if(Input.GetMouseButtonDown(0)) {
-			if(EventSystem.current.IsPointerOverGameObject(0) || EventSystem.current.IsPointerOverGameObject(1))
-				return;
-			
-			if((Application.platform == RuntimePlatform.OSXEditor || Application.platform == RuntimePlatform.WindowsEditor) && EventSystem.current.IsPointerOverGameObject(-1))
-				return;
-			Debug.Log("down");
 			_startTouchPosition = Camera.main.ScreenToWorldPoint( Input.mousePosition );
 			_isStartTouchAction = true;
 		}
 
-		if(_isStartTouchAction){
+		if(_isStartTouchAction) {
 			_currentTouchPosition = Camera.main.ScreenToWorldPoint( Input.mousePosition );
 		}
 
 		if(Input.GetMouseButtonUp(0)) {
-			if(EventSystem.current.IsPointerOverGameObject(0) || EventSystem.current.IsPointerOverGameObject(1))
-				return;
-			
-			if((Application.platform == RuntimePlatform.OSXEditor || Application.platform == RuntimePlatform.WindowsEditor) && EventSystem.current.IsPointerOverGameObject(-1))
-				return;
-			Debug.Log("up");
 			_endTouchPosition = Camera.main.ScreenToWorldPoint( Input.mousePosition );
 			_isStartTouchAction = false;
 			_isEndTouchAction = true;

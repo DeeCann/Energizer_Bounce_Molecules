@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class GameControler : MonoBehaviour {
+	private bool _levelSuccess = false;
 
 	private static GameControler _instance = null;
 	public static GameControler Instance {
@@ -17,19 +18,32 @@ public class GameControler : MonoBehaviour {
 		_instance = this;
 	}
 
+	public void LoadLevel(string level) {
+		Application.LoadLevel(level);
+	}
+
 	public void LoadNextLevel() {
-		Application.LoadLevel(Application.loadedLevel+1);
+		if(Application.loadedLevel == 10)
+			Application.LoadLevel(0);
+		else
+			Application.LoadLevel(Application.loadedLevel+1);
 	}
 
 	public void ReloadLevel() {
-		
+		Application.LoadLevel(Application.loadedLevel);
 	}
 
 	public void LevelSuccess() {
-
+		PlayerPrefs.SetInt(Application.loadedLevelName, 1);
 	}
 
 	public void LevelFailed() {
 
+	}
+
+	public bool IsLevelSuccess {
+		get {
+			return _levelSuccess;
+		}
 	}
 }

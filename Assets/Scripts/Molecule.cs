@@ -3,29 +3,16 @@ using System.Collections;
 
 public class Molecule : MonoBehaviour {
 	private Animator _moleculeAnimator;
+	private Bounce _bounceControler;
 
 	private float _randomBlickTime = 0;
 	private float _decreaseVelocityByFactor = 0;
 	private bool _decreaseVelocityByMaterial = false;
 
-//	private static Molecule _instance = null;
-//	public static Molecule Instance {
-//        get {
-//            if (_instance == null)
-//				_instance = GameObject.FindObjectOfType(typeof(Molecule)) as Molecule;
-//
-//            return _instance;
-//        }
-//    }
-
     void Awake() {
-        //_instance = this;
-
 		_moleculeAnimator = GetComponent<Animator>();
-
+		_bounceControler = GetComponent<Bounce>();
 		_randomBlickTime = Random.Range(3, 6);
-
-
     }
 
 	void Start() {
@@ -33,14 +20,14 @@ public class Molecule : MonoBehaviour {
 
 		_decreaseVelocityByMaterial = false;
 		GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-		GetComponent<Rigidbody2D>().isKinematic = true;
 		GetComponent<Rigidbody2D>().angularVelocity = 0;
 	}
 
 	void FixedUpdate() {
-		Debug.Log(GetComponent<Rigidbody2D>().angularVelocity);
 		if(Mathf.Abs( GetComponent<Rigidbody2D>().angularVelocity) > 0)
 			GetComponent<Rigidbody2D>().angularVelocity = Mathf.Lerp(GetComponent<Rigidbody2D>().angularVelocity, 0, Time.deltaTime * 2);
+
+
 	}
 
 	void OnCollisionEnter2D(Collision2D other) {
@@ -83,5 +70,16 @@ public class Molecule : MonoBehaviour {
 			yield return 0;
 		}
 	}
+	
+	public IEnumerator ResetAfterSmallVelocity() {
+		yield return new WaitForSeconds(1);
 
+		while(GetComponent<Rigidbody2D>().velocity.magnitude > 0.1f)
+			yield return 0;
+
+		yield return new WaitForSeconds(0.5f);
+
+		if(!GameControler.Instance.IsLevelSuccess)
+			GameControler.Instance.ReloadLevel();
+	}
 }

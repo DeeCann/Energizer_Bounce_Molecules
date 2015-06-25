@@ -4,10 +4,14 @@ using System.Collections;
 public class TopMenuControler : MonoBehaviour {
 
 	public void Reload() {
-		Application.LoadLevel(Application.loadedLevel);
+		GameControler.Instance.ReloadLevel();
 	}
 
 	public void Exit() {
+		Application.Quit();
+	}
+
+	public void Back() {
 		Application.LoadLevel(0);
 	}
 }

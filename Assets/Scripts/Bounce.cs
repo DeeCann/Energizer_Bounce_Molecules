@@ -30,6 +30,14 @@ public class Bounce : MonoBehaviour {
 			GetComponent<Rigidbody2D>().AddForce((InputEventHandler.EndTouchPosition - (Vector2)transform.position) * 300);
 
 			_ballReleased = true;
+
+			StartCoroutine(GetComponent<Molecule>().ResetAfterSmallVelocity());
         }
+	}
+
+	public bool IsBallReleased {
+		get {
+			return _ballReleased;
+		}
 	}
 }
