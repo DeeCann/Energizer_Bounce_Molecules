@@ -9,6 +9,8 @@ public class InputEventHandler : MonoBehaviour {
 	private static Vector2 _currentTouchPosition = Vector2.zero;
 	private static Vector2 _endTouchPosition = Vector2.zero;
 
+	private bool _UIHit = false;
+
 	void Awake() {
 		_isStartTouchAction = false;
 		_isEndTouchAction = false;
@@ -20,13 +22,20 @@ public class InputEventHandler : MonoBehaviour {
 
 
 	void Update () {
-		if(EventSystem.current.IsPointerOverGameObject(0) || EventSystem.current.IsPointerOverGameObject(1))
+		if(EventSystem.current.IsPointerOverGameObject(0) || EventSystem.current.IsPointerOverGameObject(1)) {
+			_UIHit = true;
+
 			return;
+		}
 		
-		if((Application.platform == RuntimePlatform.OSXEditor || Application.platform == RuntimePlatform.WindowsEditor) && EventSystem.current.IsPointerOverGameObject(-1))
+		if((Application.platform == RuntimePlatform.OSXEditor || Application.platform == RuntimePlatform.WindowsEditor) && EventSystem.current.IsPointerOverGameObject(-1)) {
+			_UIHit = true;
+
 			return;
+		}
 
 		if(Input.GetMouseButtonDown(0)) {
+			_UIHit = false;	
 			_startTouchPosition = Camera.main.ScreenToWorldPoint( Input.mousePosition );
 			_isStartTouchAction = true;
 		}
@@ -35,7 +44,12 @@ public class InputEventHandler : MonoBehaviour {
 			_currentTouchPosition = Camera.main.ScreenToWorldPoint( Input.mousePosition );
 		}
 
-		if(Input.GetMouseButtonUp(0)) {
+		if(Input.GetMouseButtonUp(0) && _isStartTouchAction) {
+			if(_UIHit) {
+				_UIHit = false;
+				return;
+			}
+
 			_endTouchPosition = Camera.main.ScreenToWorldPoint( Input.mousePosition );
 			_isStartTouchAction = false;
 			_isEndTouchAction = true;

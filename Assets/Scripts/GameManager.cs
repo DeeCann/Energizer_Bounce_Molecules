@@ -20,5 +20,7 @@ public class GameManager : MonoBehaviour {
 	void Awake() {
 		if(!PlayerPrefs.HasKey("Basic_1"))
 			PlayerPrefs.SetInt("Basic_1", 1);
+
+		Application.targetFrameRate = 60;
 	}
 }

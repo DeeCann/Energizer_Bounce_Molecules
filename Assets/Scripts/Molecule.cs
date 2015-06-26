@@ -31,8 +31,11 @@ public class Molecule : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D other) {
-		if(other.collider.transform.root.GetComponent<SpriteRenderer>().sortingLayerName == "Obstacles")
+		if(other.collider.transform.root.GetComponent<SpriteRenderer>().sortingLayerName == "Obstacles") {
 			_moleculeAnimator.SetTrigger("Hit");
+			GetComponent<Rigidbody2D>().velocity *= 1.05f;
+			Debug.Log(GetComponent<Rigidbody2D>().velocity);
+		}
 
 		if(other.collider.GetComponent<Car>()) {
 			other.collider.GetComponent<Car>().StopMoving = true;
