@@ -5,7 +5,7 @@ public class Bounce : MonoBehaviour {
 	private LineRenderer _lineHelper;
 
 	private Vector2 _startForce = Vector2.zero;
-	private float _maxForceVelocityFactor = 150;
+	private float _maxForceVelocityFactor = 100;
 	private float _startForceVelocityFactor = 1;
 
 	private bool _ballReleased = false;
