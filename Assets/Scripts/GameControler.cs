@@ -4,6 +4,10 @@ using System.Collections;
 public class GameControler : MonoBehaviour {
 	private bool _levelSuccess = false;
 	private bool _levelStarted = false;
+	
+	private int _collisionsCounter = 0;
+
+	private Transform _myMolecule;
 
 	private static GameControler _instance = null;
 	public static GameControler Instance {
@@ -18,6 +22,8 @@ public class GameControler : MonoBehaviour {
 	void Awake() {
 		_levelStarted = false;
 		_instance = this;
+
+		_collisionsCounter = 0;
 	}
 
 	void Start() {
@@ -40,11 +46,12 @@ public class GameControler : MonoBehaviour {
 	}
 
 	public void LevelSuccess() {
-		PlayerPrefs.SetInt(Application.loadedLevelName, 1);
+		CheckForUnlockMolecule();
+		LoadNextLevel();
 	}
 
 	public void LevelFailed() {
-
+		ReloadLevel();
 	}
 
 	public bool IsLevelSuccess {
@@ -60,6 +67,40 @@ public class GameControler : MonoBehaviour {
 	public bool IsLevelStarted {
 		get {
 			return _levelStarted;
+		}
+	}
+
+	public int CollisionCounter {
+		set {
+			_collisionsCounter = value;
+		}
+
+		get {
+			return _collisionsCounter;
+		}
+	}
+
+	public Transform MyMolecule {
+		set {
+			_myMolecule = value;
+		}
+
+		get {
+			return _myMolecule;
+		}
+	}
+
+	private void CheckForUnlockMolecule() {
+		if(GameManager.Instance.moleculesUnlocLevels.ContainsKey(Application.loadedLevelName))
+			PlayerPrefs.SetInt(GameManager.Instance.moleculesUnlocLevels[Application.loadedLevelName], 1);
+	}
+
+	public void ChangeMolecule(string _newMolecule) {
+		if(PlayerPrefs.HasKey(_newMolecule)) {
+			GameObject newMolecule = (GameObject)Instantiate(Resources.Load("Molecules/"+_newMolecule), MyMolecule.transform.position, Quaternion.identity);
+			newMolecule.transform.localScale = Vector3.one * 0.3f;
+			Destroy(MyMolecule.gameObject);
+			MyMolecule = newMolecule.transform;
 		}
 	}
 

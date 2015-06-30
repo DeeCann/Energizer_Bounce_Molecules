@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class BottomMenuControler : MonoBehaviour {
 	[SerializeField]
@@ -8,12 +9,33 @@ public class BottomMenuControler : MonoBehaviour {
 	[SerializeField]
 	private Transform _selectMoleculePanel;
 
+	[SerializeField]
+	private Text _maxColisionsText;
+
 	private bool _selectMoleculePanelActive = false;
+
+	private static BottomMenuControler _instance = null;
+	public static BottomMenuControler Instance {
+		get {
+			if (_instance == null)
+				_instance = GameObject.FindObjectOfType(typeof(BottomMenuControler)) as BottomMenuControler;
+			
+			return _instance;
+		}
+	}
+
+	void Awake() {
+		_instance = this;
+	}
+
+	void Update() {
+		_maxColisionsText.text = MoleculeCounterToString;
+	}
 
 	public void OpenMoleculeChoosePanel() {
 		if(_selectMoleculePanelActive) {
 			_selectMoleculePanel.GetComponent<Animator>().SetInteger("Active", 0);
-			//_selectMoleculePanel.gameObject.SetActive(false);
+			_selectMoleculePanel.gameObject.SetActive(false);
 			_selectMoleculePanelActive = false;
 		} else {
 			_selectMoleculePanel.gameObject.SetActive(true);
@@ -21,6 +43,15 @@ public class BottomMenuControler : MonoBehaviour {
 			_selectMoleculePanelActive = true;
 
 			_tapHint.gameObject.SetActive(false);
+		}
+	}
+
+	private string MoleculeCounterToString {
+		get {
+			if(GameControler.Instance.CollisionCounter <= 9)
+				return "0"+GameControler.Instance.CollisionCounter.ToString();
+			else
+				return GameControler.Instance.CollisionCounter.ToString();
 		}
 	}
 }

@@ -5,6 +5,7 @@ public class Molecule : MonoBehaviour {
 	private Animator _moleculeAnimator;
 	private Bounce _bounceControler;
 
+
 	private float _randomBlickTime = 0;
 	private float _decreaseVelocityByFactor = 0;
 	private bool _decreaseVelocityByMaterial = false;
@@ -21,20 +22,22 @@ public class Molecule : MonoBehaviour {
 		_decreaseVelocityByMaterial = false;
 		GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 		GetComponent<Rigidbody2D>().angularVelocity = 0;
+
+
+		GameControler.Instance.MyMolecule = transform;
 	}
 
 	void FixedUpdate() {
 		if(Mathf.Abs( GetComponent<Rigidbody2D>().angularVelocity) > 0)
 			GetComponent<Rigidbody2D>().angularVelocity = Mathf.Lerp(GetComponent<Rigidbody2D>().angularVelocity, 0, Time.deltaTime * 2);
-
-
 	}
 
 	void OnCollisionEnter2D(Collision2D other) {
 		if(other.collider.transform.root.GetComponent<SpriteRenderer>().sortingLayerName == "Obstacles") {
 			_moleculeAnimator.SetTrigger("Hit");
 			GetComponent<Rigidbody2D>().velocity *= 1.05f;
-			Debug.Log(GetComponent<Rigidbody2D>().velocity);
+
+			GameControler.Instance.CollisionCounter -= 1;
 		}
 
 		if(other.collider.GetComponent<Car>()) {

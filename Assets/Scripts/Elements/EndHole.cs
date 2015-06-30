@@ -3,30 +3,14 @@ using System.Collections;
 
 public class EndHole : MonoBehaviour {
 	private Transform _molecule;
-	private bool _trackDistance = false;
-
-//	void FixedUpdate() {
-//		if(_trackDistance) {
-//			if(Vector3.Distance(transform.position, _molecule.position) <= GetComponent<CircleCollider2D>().radius / 4) {
-//				_molecule.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-//				StartCoroutine(LerpMoleculeToHole());
-//			}
-//		}
-//	}
-
+	
 	void OnTriggerEnter2D(Collider2D other) {
 		if(other.tag == Tags.Molecule) {
 			_molecule = other.transform;
-			_trackDistance = true;
 
 			_molecule.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
 			StartCoroutine(LerpMoleculeToHole());
 		}
-	}
-
-	void OnTriggerExit2D(Collider2D other) {
-		if(other.tag == Tags.Molecule)
-			_trackDistance = false;
 	}
 
 	IEnumerator LerpMoleculeToHole() {
@@ -47,6 +31,6 @@ public class EndHole : MonoBehaviour {
 			yield return 0;
 		}
 
-		GameControler.Instance.LoadNextLevel();
+		GameControler.Instance.LevelSuccess();
 	}
 }
