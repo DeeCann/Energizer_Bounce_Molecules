@@ -54,9 +54,6 @@ public class InputEventHandler : MonoBehaviour {
 			_isStartTouchAction = false;
 			_isEndTouchAction = true;
 		}
-
-		Debug.Log(_isStartTouchAction + " - " + _isEndTouchAction);
-
 	}
 
 	public static Vector2 StartTouchPosition

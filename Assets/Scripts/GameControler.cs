@@ -24,10 +24,15 @@ public class GameControler : MonoBehaviour {
 		_instance = this;
 
 		_collisionsCounter = 0;
+
+
 	}
 
 	void Start() {
 		StartCoroutine(StartLevel());
+
+		if(PlayerPrefs.HasKey("LastMoleculeSelected"))
+			ChangeMolecule(PlayerPrefs.GetString("LastMoleculeSelected"));
 	}
 
 	public void LoadLevel(string level) {
@@ -35,6 +40,8 @@ public class GameControler : MonoBehaviour {
 	}
 
 	public void LoadNextLevel() {
+		PlayerPrefs.DeleteKey("LastMoleculeSelected");
+
 		if(Application.loadedLevel == 10)
 			Application.LoadLevel(0);
 		else
@@ -97,6 +104,9 @@ public class GameControler : MonoBehaviour {
 
 	public void ChangeMolecule(string _newMolecule) {
 		if(PlayerPrefs.HasKey(_newMolecule)) {
+			if(MyMolecule == null)
+				MyMolecule = GameObject.FindGameObjectWithTag("Molecule").transform;
+
 			GameObject newMolecule = (GameObject)Instantiate(Resources.Load("Molecules/"+_newMolecule), MyMolecule.transform.position, Quaternion.identity);
 			newMolecule.transform.localScale = Vector3.one * 0.3f;
 			Destroy(MyMolecule.gameObject);

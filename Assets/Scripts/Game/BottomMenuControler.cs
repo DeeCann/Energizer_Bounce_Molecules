@@ -26,6 +26,9 @@ public class BottomMenuControler : MonoBehaviour {
 
 	void Awake() {
 		_instance = this;
+
+		if(PlayerPrefs.HasKey("MoleculeHint"))
+			_tapHint.gameObject.SetActive(false);
 	}
 
 	void Update() {
@@ -33,6 +36,8 @@ public class BottomMenuControler : MonoBehaviour {
 	}
 
 	public void OpenMoleculeChoosePanel() {
+		PlayerPrefs.SetInt("MoleculeHint", 1);
+
 		if(_selectMoleculePanelActive) {
 			_selectMoleculePanel.GetComponent<Animator>().SetInteger("Active", 0);
 			_selectMoleculePanel.gameObject.SetActive(false);

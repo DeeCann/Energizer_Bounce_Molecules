@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: e94a38e5460d24b44bfad07b05599469
-timeCreated: 1435097007
+timeCreated: 1435732893
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -107,11 +107,11 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 142
+        width: 141
         height: 143
       alignment: 0
       pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 0, y: 0, z: 1, w: 0}
     - name: MOLECULE-SELECTION
       rect:
         serializedVersion: 2

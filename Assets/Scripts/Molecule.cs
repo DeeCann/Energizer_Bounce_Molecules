@@ -3,16 +3,16 @@ using System.Collections;
 
 public class Molecule : MonoBehaviour {
 	private Animator _moleculeAnimator;
-	private Bounce _bounceControler;
-
-
+	
 	private float _randomBlickTime = 0;
 	private float _decreaseVelocityByFactor = 0;
 	private bool _decreaseVelocityByMaterial = false;
 
+	private Vector2 _rollingBandDirection = Vector2.zero;
+	private bool _changeVelocityByRollingBand = false;
+
     void Awake() {
 		_moleculeAnimator = GetComponent<Animator>();
-		_bounceControler = GetComponent<Bounce>();
 		_randomBlickTime = Random.Range(3, 6);
     }
 
@@ -51,12 +51,21 @@ public class Molecule : MonoBehaviour {
 			_decreaseVelocityByMaterial = true;
 			StartCoroutine(DecreaseVelocity());
 		}
+
+		if(other.GetComponent<RollingBand>()) {
+			_rollingBandDirection = other.transform.up;
+			_changeVelocityByRollingBand = true;
+			StartCoroutine(ChangeVelocityByRollingBand());
+		}
 	}
 
 	void OnTriggerExit2D(Collider2D other) {
 		if(other.GetComponent<SlowDownMaterial>()) {
 			_decreaseVelocityByMaterial = false;
 		}
+
+		if(other.GetComponent<RollingBand>())	
+			_changeVelocityByRollingBand = false;
 	}
 
 	IEnumerator RandomBlick() {
@@ -73,6 +82,13 @@ public class Molecule : MonoBehaviour {
 
 			if(GetComponent<Rigidbody2D>().velocity.magnitude < 0.1f)
 				_decreaseVelocityByMaterial = false;
+			yield return 0;
+		}
+	}
+
+	IEnumerator ChangeVelocityByRollingBand() {
+		while(_changeVelocityByRollingBand) {
+			GetComponent<Rigidbody2D>().velocity = Vector2.Lerp(GetComponent<Rigidbody2D>().velocity, _rollingBandDirection * 10, Time.deltaTime * 5.2f);
 			yield return 0;
 		}
 	}
