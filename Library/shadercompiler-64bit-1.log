@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Base path: /Applications/Unity/Unity.app/Contents
 Pipe name: \\.\pipe\UnityShaderCompiler-64bit-1-2007720704
 Cmd: getPlatforms
@@ -19,3 +20,38 @@ Cmd: compileSnippet
   api=5 type=1 insize=1642 outsize=6 kw=SOFTPARTICLES_OFF ok=1
 Cmd: compileSnippet
   api=9 type=1 insize=1642 outsize=7 kw=SOFTPARTICLES_ON ok=1
+=======
+Base path: E:/graficzne/Unity/Editor/Data
+Pipe name: \\.\pipe\UnityShaderCompiler-64bit-1-9220
+Cmd: getPlatforms
+Cmd: compileSnippet
+  api=4 type=0 insize=14306 outsize=4199 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF PIXELSNAP_ON ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=14306 outsize=1420 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF PIXELSNAP_ON ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=7914 outsize=3289 kw=DIRECTIONAL PIXELSNAP_ON ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=7914 outsize=1274 kw=DIRECTIONAL PIXELSNAP_ON ok=1
+Cmd: preprocess
+  insize=5289 outsize=2575 ok=1
+Cmd: preprocess
+  insize=907 outsize=379 ok=1
+Cmd: preprocess
+  insize=453 outsize=1495 ok=1
+Cmd: preprocess
+  insize=431 outsize=431 ok=1
+Cmd: preprocess
+  insize=5317 outsize=2603 ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=7080 outsize=4768 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=7080 outsize=1973 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=1706 outsize=1274 kw=SOFTPARTICLES_OFF ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=1706 outsize=852 kw=SOFTPARTICLES_OFF ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=1811 outsize=1274 kw=SOFTPARTICLES_OFF ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=1811 outsize=1095 kw=SOFTPARTICLES_OFF ok=1
+>>>>>>> c4770b542ec525fbb851c24c8bb27243ac642476
