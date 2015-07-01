@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: bb84e72e5c6d2401891922021c1d7ebb
-timeCreated: 1435177105
+timeCreated: 1435735053
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -16,6 +16,7 @@ TextureImporter:
     21300018: LevelPack2Unactive
     21300020: LevelPack3Active
     21300022: LevelPack3Unactive
+    21300024: moleculeEcho
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -178,6 +179,16 @@ TextureImporter:
         y: 410
         width: 203
         height: 203
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: moleculeEcho
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 243
+        height: 244
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}

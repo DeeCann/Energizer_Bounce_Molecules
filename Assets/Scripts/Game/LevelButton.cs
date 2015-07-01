@@ -4,6 +4,9 @@ using UnityEngine.UI;
 
 public class LevelButton : MonoBehaviour {
 
+	public AudioClip _failTouch;
+	public AudioClip _properTouch;
+
 	public GameManager.GlobalLevelsNames LevelName;
 	
 	private GameObject _activeIco;
@@ -13,7 +16,6 @@ public class LevelButton : MonoBehaviour {
 	private bool _isLocked = true;
 
 	void Start () {
-		Debug.Log("test");
 		if(PlayerPrefs.HasKey(LevelName.ToString())) {
 			_isLocked = false;
 
@@ -30,6 +32,11 @@ public class LevelButton : MonoBehaviour {
 	public void PlayLevel() {
 		if(!_isLocked) {
 			GameControler.Instance.LoadLevel(LevelName.ToString());
+			GetComponent<AudioSource>().clip = _properTouch;
+			GetComponent<AudioSource>().Play();
+		} else {
+			GetComponent<AudioSource>().clip = _failTouch;
+			GetComponent<AudioSource>().Play();
 		}
 	}
 }

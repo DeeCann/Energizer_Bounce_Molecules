@@ -24,32 +24,37 @@ public class GameControler : MonoBehaviour {
 		_instance = this;
 
 		_collisionsCounter = 0;
-
-
 	}
 
 	void Start() {
+		FadeScreen.Instance.StartScene();
+
 		StartCoroutine(StartLevel());
 
-		if(PlayerPrefs.HasKey("LastMoleculeSelected"))
+		if(Application.loadedLevel == 0)
+			PlayerPrefs.DeleteKey("LastMoleculeSelected");
+
+		if(Application.loadedLevel > 0 && PlayerPrefs.HasKey("LastMoleculeSelected"))
 			ChangeMolecule(PlayerPrefs.GetString("LastMoleculeSelected"));
+
+
 	}
 
 	public void LoadLevel(string level) {
-		Application.LoadLevel(level);
+		FadeScreen.Instance.EndScene(level);
 	}
 
 	public void LoadNextLevel() {
 		PlayerPrefs.DeleteKey("LastMoleculeSelected");
 
 		if(Application.loadedLevel == 10)
-			Application.LoadLevel(0);
+			FadeScreen.Instance.EndScene(null, 0);
 		else
-			Application.LoadLevel(Application.loadedLevel+1);
+			FadeScreen.Instance.EndScene(null, Application.loadedLevel+1);
 	}
 
-	public void ReloadLevel() {
-		Application.LoadLevel(Application.loadedLevel);
+	public void ReloadLevel(int reloadAfterTime = 0) {
+		StartCoroutine(ReloadAfterTime(reloadAfterTime));
 	}
 
 	public void LevelSuccess() {
@@ -118,5 +123,11 @@ public class GameControler : MonoBehaviour {
 		yield return new WaitForSeconds(1);
 
 		_levelStarted = true;
+	}
+
+	IEnumerator ReloadAfterTime(int time) {
+		yield return new WaitForSeconds(time);
+
+		FadeScreen.Instance.EndScene(null, Application.loadedLevel);
 	}
 }

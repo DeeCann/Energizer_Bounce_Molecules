@@ -10,6 +10,8 @@ public class EndHole : MonoBehaviour {
 
 			_molecule.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
 			StartCoroutine(LerpMoleculeToHole());
+
+			GetComponent<AudioSource>().Play();
 		}
 	}
 

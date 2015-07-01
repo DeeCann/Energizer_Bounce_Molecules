@@ -34,10 +34,26 @@ public class Molecule : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D other) {
 		if(other.collider.transform.root.GetComponent<SpriteRenderer>().sortingLayerName == "Obstacles") {
+			GetComponent<AudioSource>().Play();
 			_moleculeAnimator.SetTrigger("Hit");
 			GetComponent<Rigidbody2D>().velocity *= 1.05f;
 
+			if(GameControler.Instance.CollisionCounter == 0) {
+				transform.FindChild("BoomParticles").GetComponent<ParticleSystem>().Emit(100);
+				transform.FindChild("BoomParticles").GetComponent<AudioSource>().Play();
+				transform.FindChild("BoomParticles").transform.parent = null;
+				
+				Destroy(gameObject);
+				
+				GameControler.Instance.ReloadLevel(1);
+
+				return;
+			}
 			GameControler.Instance.CollisionCounter -= 1;
+
+			CameraShake.Instance.DoShake();
+
+			Instantiate(Resources.Load("CollisionParticles"), transform.position, Quaternion.identity);
 		}
 
 		if(other.collider.GetComponent<Car>()) {
