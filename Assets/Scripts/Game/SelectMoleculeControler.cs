@@ -38,9 +38,11 @@ public class SelectMoleculeControler : MonoBehaviour {
 	}
 
 	public void SelectMe(string _name) {
-		GameControler.Instance.ChangeMolecule(_name);
-		BottomMenuControler.Instance.OpenMoleculeChoosePanel();
+		if(GameControler.Instance.ChangeMolecule(_name)) {
+			GetComponent<AudioSource>().Play();
+			BottomMenuControler.Instance.OpenMoleculeChoosePanel();
 
-		PlayerPrefs.SetString("LastMoleculeSelected", _name);
+			PlayerPrefs.SetString("LastMoleculeSelected", _name);
+		}
 	}
 }

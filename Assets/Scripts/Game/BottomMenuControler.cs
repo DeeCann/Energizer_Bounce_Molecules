@@ -38,6 +38,8 @@ public class BottomMenuControler : MonoBehaviour {
 	public void OpenMoleculeChoosePanel() {
 		PlayerPrefs.SetInt("MoleculeHint", 1);
 
+		transform.FindChild("ChooseMolecule").GetComponent<AudioSource>().Play();
+
 		if(_selectMoleculePanelActive) {
 			_selectMoleculePanel.GetComponent<Animator>().SetInteger("Active", 0);
 			_selectMoleculePanel.gameObject.SetActive(false);

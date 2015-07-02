@@ -108,7 +108,7 @@ public class GameControler : MonoBehaviour {
 			PlayerPrefs.SetInt(GameManager.Instance.moleculesUnlocLevels[Application.loadedLevelName], 1);
 	}
 
-	public void ChangeMolecule(string _newMolecule) {
+	public bool ChangeMolecule(string _newMolecule) {
 		if(PlayerPrefs.HasKey(_newMolecule)) {
 			if(MyMolecule == null)
 				MyMolecule = GameObject.FindGameObjectWithTag("Molecule").transform;
@@ -117,7 +117,10 @@ public class GameControler : MonoBehaviour {
 			newMolecule.transform.localScale = Vector3.one * 0.3f;
 			Destroy(MyMolecule.gameObject);
 			MyMolecule = newMolecule.transform;
-		}
+
+			return true;
+		} else
+			return false;
 	}
 
 	IEnumerator StartLevel() {
