@@ -58,6 +58,7 @@ public class GameControler : MonoBehaviour {
 	}
 
 	public void LevelSuccess() {
+		PlayerPrefs.SetInt("Basic_"+(System.Convert.ToInt16( Application.loadedLevelName.Substring(6))+1), 1);
 		CheckForUnlockMolecule();
 		LoadNextLevel();
 	}

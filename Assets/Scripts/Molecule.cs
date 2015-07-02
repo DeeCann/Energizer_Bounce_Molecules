@@ -14,6 +14,9 @@ public class Molecule : MonoBehaviour {
     void Awake() {
 		_moleculeAnimator = GetComponent<Animator>();
 		_randomBlickTime = Random.Range(3, 6);
+
+		GetComponent<TrailRenderer>().sortingLayerID = GetComponent<SpriteRenderer>().sortingLayerID;
+		GetComponent<LineRenderer>().sortingLayerID = GetComponent<SpriteRenderer>().sortingLayerID;
     }
 
 	void Start() {
@@ -33,7 +36,7 @@ public class Molecule : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D other) {
-		if(other.collider.transform.root.GetComponent<SpriteRenderer>().sortingLayerName == "Obstacles") {
+		if(other.collider.tag == "Edge" || other.collider.transform.root.GetComponent<SpriteRenderer>().sortingLayerName == "Obstacles") {
 			GetComponent<AudioSource>().Play();
 			_moleculeAnimator.SetTrigger("Hit");
 			GetComponent<Rigidbody2D>().velocity *= 1.05f;
