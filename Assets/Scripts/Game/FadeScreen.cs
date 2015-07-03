@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class FadeScreen : MonoBehaviour {
 
-	public float fadeSpeed = 0.8f; 
+	private float fadeSpeed = 4f; 
 	private bool _breakFadeInCorutine = false; 
 	private Image fadeImage;
 
