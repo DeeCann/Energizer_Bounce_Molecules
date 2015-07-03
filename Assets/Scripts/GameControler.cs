@@ -30,7 +30,7 @@ public class GameControler : MonoBehaviour {
 		FadeScreen.Instance.StartScene();
 
 		StartCoroutine(StartLevel());
-
+	
 		if(Application.loadedLevel == 0)
 			PlayerPrefs.DeleteKey("LastMoleculeSelected");
 
@@ -48,7 +48,7 @@ public class GameControler : MonoBehaviour {
 		PlayerPrefs.DeleteKey("LastMoleculeSelected");
 
 		if(Application.loadedLevel == 10)
-			FadeScreen.Instance.EndScene(null, 0);
+			FadeScreen.Instance.EndScene(null, 1);
 		else
 			FadeScreen.Instance.EndScene(null, Application.loadedLevel+1);
 	}

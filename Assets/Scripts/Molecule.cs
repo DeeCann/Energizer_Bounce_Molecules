@@ -39,7 +39,7 @@ public class Molecule : MonoBehaviour {
 		if(other.collider.tag == "Edge" || other.collider.transform.root.GetComponent<SpriteRenderer>().sortingLayerName == "Obstacles") {
 			GetComponent<AudioSource>().Play();
 			_moleculeAnimator.SetTrigger("Hit");
-			GetComponent<Rigidbody2D>().velocity *= 1.05f;
+			GetComponent<Rigidbody2D>().velocity *= 1.25f;
 
 			if(GameControler.Instance.CollisionCounter == 0) {
 				transform.FindChild("BoomParticles").GetComponent<ParticleSystem>().Emit(100);
