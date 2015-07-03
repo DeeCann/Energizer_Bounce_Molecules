@@ -37,7 +37,7 @@ public class GameControler : MonoBehaviour {
 		if(Application.loadedLevel > 0 && PlayerPrefs.HasKey("LastMoleculeSelected"))
 			ChangeMolecule(PlayerPrefs.GetString("LastMoleculeSelected"));
 
-
+		SFXControler.Instance.VolumeUp();
 	}
 
 	public void LoadLevel(string level) {
@@ -60,7 +60,7 @@ public class GameControler : MonoBehaviour {
 	public void LevelSuccess() {
 		PlayerPrefs.SetInt("Basic_"+(System.Convert.ToInt16( Application.loadedLevelName.Substring(6))+1), 1);
 		CheckForUnlockMolecule();
-		LoadNextLevel();
+
 	}
 
 	public void LevelFailed() {
@@ -104,8 +104,13 @@ public class GameControler : MonoBehaviour {
 	}
 
 	private void CheckForUnlockMolecule() {
-		if(GameManager.Instance.moleculesUnlocLevels.ContainsKey(Application.loadedLevelName))
+		if(GameManager.Instance.moleculesUnlocLevels.ContainsKey(Application.loadedLevelName)) {
+
 			PlayerPrefs.SetInt(GameManager.Instance.moleculesUnlocLevels[Application.loadedLevelName], 1);
+			NewMolecule.Instance.ShowNewMolecule(GameManager.Instance.moleculesUnlocLevels[Application.loadedLevelName]);
+			StartCoroutine(LoadNextLevelWithTimer(3));
+		} else
+			LoadNextLevel();
 	}
 
 	public bool ChangeMolecule(string _newMolecule) {
@@ -133,5 +138,11 @@ public class GameControler : MonoBehaviour {
 		yield return new WaitForSeconds(time);
 
 		FadeScreen.Instance.EndScene(null, Application.loadedLevel);
+	}
+
+	IEnumerator LoadNextLevelWithTimer(int _timer) {
+		yield return new WaitForSeconds(_timer);
+		SFXControler.Instance.VolumeUp();
+		LoadNextLevel();
 	}
 }

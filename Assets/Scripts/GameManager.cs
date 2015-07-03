@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void Awake() {
+
 		_instance = this;
 
 		if(!PlayerPrefs.HasKey("Basic_1"))
@@ -41,6 +42,7 @@ public class GameManager : MonoBehaviour {
 
 		Application.targetFrameRate = 60;
 
+		moleculesUnlocLevels.Clear();
 		moleculesUnlocLevels.Add("Basic_2", "gel");
 		moleculesUnlocLevels.Add("Basic_4", "iron");
 		moleculesUnlocLevels.Add("Basic_6", "rubber");
