@@ -32,7 +32,7 @@ public class GameControler : MonoBehaviour {
 
 		StartCoroutine(StartLevel());
 	
-		if(Application.loadedLevel == 0)
+		if(Application.loadedLevel == 1)
 			PlayerPrefs.DeleteKey("LastMoleculeSelected");
 
 		if(Application.loadedLevel > 1 && PlayerPrefs.HasKey("LastMoleculeSelected"))
@@ -59,9 +59,12 @@ public class GameControler : MonoBehaviour {
 	}
 
 	public void LevelSuccess() {
-		PlayerPrefs.SetInt("Basic_"+(System.Convert.ToInt16( Application.loadedLevelName.Substring(6))+1), 1);
-		CheckForUnlockMolecule();
-
+		if(System.Convert.ToInt16( Application.loadedLevelName.Substring(6)) == 10)
+			LevelsComplete.Instance.LevelsCompleted();
+		else {
+			PlayerPrefs.SetInt("Basic_"+(System.Convert.ToInt16( Application.loadedLevelName.Substring(6))+1), 1);
+			CheckForUnlockMolecule();
+		}
 	}
 
 	public void LevelFailed() {
@@ -132,7 +135,7 @@ public class GameControler : MonoBehaviour {
 	}
 
 	IEnumerator StartLevel() {
-		yield return new WaitForSeconds(1);
+		yield return new WaitForSeconds(0.5f);
 
 		_levelStarted = true;
 	}

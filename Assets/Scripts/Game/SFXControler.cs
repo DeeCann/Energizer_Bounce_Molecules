@@ -26,6 +26,7 @@ public class SFXControler : MonoBehaviour {
 	}
 
 	public void VolumeDown() {
+		Debug.Log("vol dowN");
 		StartCoroutine(GetVolumeDown());
 	}
 

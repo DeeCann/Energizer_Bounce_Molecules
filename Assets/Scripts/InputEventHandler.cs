@@ -22,22 +22,27 @@ public class InputEventHandler : MonoBehaviour {
 
 
 	void Update () {
-		if(EventSystem.current.IsPointerOverGameObject(0) || EventSystem.current.IsPointerOverGameObject(1)) {
-			_UIHit = true;
-
-			return;
-		}
-		
-		if((Application.platform == RuntimePlatform.OSXEditor || Application.platform == RuntimePlatform.WindowsEditor) && EventSystem.current.IsPointerOverGameObject(-1)) {
-			_UIHit = true;
-
-			return;
-		}
-
 		if(Input.GetMouseButtonDown(0)) {
-			_UIHit = false;	
-			_startTouchPosition = Camera.main.ScreenToWorldPoint( Input.mousePosition );
-			_isStartTouchAction = true;
+
+			if(EventSystem.current.IsPointerOverGameObject(0) || EventSystem.current.IsPointerOverGameObject(1)) {
+				_UIHit = true;
+
+				return;
+			}
+			
+			if((Application.platform == RuntimePlatform.OSXEditor || Application.platform == RuntimePlatform.WindowsEditor) && EventSystem.current.IsPointerOverGameObject(-1)) {
+				_UIHit = true;
+				return;
+			}
+
+			Vector3 touchPosition = Camera.main.ScreenToWorldPoint (Input.mousePosition);
+			RaycastHit2D hit = Physics2D.Raycast(touchPosition, Vector2.zero);
+
+			if (hit.collider != null && hit.collider.tag == Tags.Molecule) {
+				_UIHit = false;	
+				_startTouchPosition = Camera.main.ScreenToWorldPoint( Input.mousePosition );
+				_isStartTouchAction = true;
+			}
 		}
 
 		if(_isStartTouchAction) {
@@ -45,6 +50,7 @@ public class InputEventHandler : MonoBehaviour {
 		}
 
 		if(Input.GetMouseButtonUp(0) && _isStartTouchAction) {
+
 			if(_UIHit) {
 				_UIHit = false;
 				return;
