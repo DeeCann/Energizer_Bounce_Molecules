@@ -27,6 +27,7 @@ public class GameControler : MonoBehaviour {
 	}
 
 	void Start() {
+		//PlayerPrefs.DeleteAll();
 		FadeScreen.Instance.StartScene();
 
 		StartCoroutine(StartLevel());
@@ -34,7 +35,7 @@ public class GameControler : MonoBehaviour {
 		if(Application.loadedLevel == 0)
 			PlayerPrefs.DeleteKey("LastMoleculeSelected");
 
-		if(Application.loadedLevel > 0 && PlayerPrefs.HasKey("LastMoleculeSelected"))
+		if(Application.loadedLevel > 1 && PlayerPrefs.HasKey("LastMoleculeSelected"))
 			ChangeMolecule(PlayerPrefs.GetString("LastMoleculeSelected"));
 
 		SFXControler.Instance.VolumeUp();
@@ -105,10 +106,12 @@ public class GameControler : MonoBehaviour {
 
 	private void CheckForUnlockMolecule() {
 		if(GameManager.Instance.moleculesUnlocLevels.ContainsKey(Application.loadedLevelName)) {
-
-			PlayerPrefs.SetInt(GameManager.Instance.moleculesUnlocLevels[Application.loadedLevelName], 1);
-			NewMolecule.Instance.ShowNewMolecule(GameManager.Instance.moleculesUnlocLevels[Application.loadedLevelName]);
-			StartCoroutine(LoadNextLevelWithTimer(3));
+			if(!PlayerPrefs.HasKey(GameManager.Instance.moleculesUnlocLevels[Application.loadedLevelName])) {
+				PlayerPrefs.SetInt(GameManager.Instance.moleculesUnlocLevels[Application.loadedLevelName], 1);
+				NewMolecule.Instance.ShowNewMolecule(GameManager.Instance.moleculesUnlocLevels[Application.loadedLevelName]);
+				StartCoroutine(LoadNextLevelWithTimer(3));
+			} else 
+				LoadNextLevel();
 		} else
 			LoadNextLevel();
 	}
