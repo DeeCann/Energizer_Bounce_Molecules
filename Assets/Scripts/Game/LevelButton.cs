@@ -21,15 +21,20 @@ public class LevelButton : MonoBehaviour {
 
 			_activeIco = transform.FindChild("ActiveLevel").gameObject;
 			_unactiveIco = transform.FindChild("UnactiveLevel").gameObject;
-			_glowEffect = transform.FindChild("Glow").GetComponent<Image>();
+
+			if(transform.FindChild("Glow"))
+				_glowEffect = transform.FindChild("Glow").GetComponent<Image>();
 
 			_activeIco.SetActive(true);
 			_unactiveIco.SetActive(false);
-			_glowEffect.enabled = true;
+
+			if(_glowEffect != null)
+				_glowEffect.enabled = true;
 		}
 	}
 
 	public void PlayLevel() {
+		Debug.Log("platy");
 		if(!_isLocked) {
 			GameControler.Instance.LoadLevel(LevelName.ToString());
 			GetComponent<AudioSource>().clip = _properTouch;
