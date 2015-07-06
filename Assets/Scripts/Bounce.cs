@@ -27,8 +27,8 @@ public class Bounce : MonoBehaviour {
 				_settingStartParams = true;
 			}
 
-			if(InputEventHandler.IsEndTouchAction)
-				_settingStartParams = false;
+			//if(InputEventHandler.IsEndTouchAction)
+			//	_settingStartParams = false;
 
 			if(InputEventHandler.IsStartTouchAction && !_ballReleased) {
 				if(_startTouchTime + _touchMaxTime > Time.time)

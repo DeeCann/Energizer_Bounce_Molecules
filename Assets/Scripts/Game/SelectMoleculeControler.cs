@@ -38,7 +38,7 @@ public class SelectMoleculeControler : MonoBehaviour {
 	}
 
 	public void SelectMe(string _name) {
-		if(GameControler.Instance.ChangeMolecule(_name)) {
+		if(!InputEventHandler._isEndTouchAction && GameControler.Instance.ChangeMolecule(_name)) {
 			GetComponent<AudioSource>().Play();
 			BottomMenuControler.Instance.OpenMoleculeChoosePanel();
 

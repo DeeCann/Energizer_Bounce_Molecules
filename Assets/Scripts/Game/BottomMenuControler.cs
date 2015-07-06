@@ -36,6 +36,9 @@ public class BottomMenuControler : MonoBehaviour {
 	}
 
 	public void OpenMoleculeChoosePanel() {
+		if(InputEventHandler._isEndTouchAction)
+			return;
+
 		PlayerPrefs.SetInt("MoleculeHint", 1);
 
 		transform.FindChild("ChooseMolecule").GetComponent<AudioSource>().Play();
