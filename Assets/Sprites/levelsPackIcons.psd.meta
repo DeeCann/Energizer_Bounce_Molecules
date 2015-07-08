@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: bb84e72e5c6d2401891922021c1d7ebb
-timeCreated: 1435735053
+timeCreated: 1436308480
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -17,6 +17,7 @@ TextureImporter:
     21300020: LevelPack3Active
     21300022: LevelPack3Unactive
     21300024: moleculeEcho
+    21300026: Warning
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -189,6 +190,16 @@ TextureImporter:
         y: 0
         width: 243
         height: 244
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Warning
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 4
+        width: 120
+        height: 102
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}

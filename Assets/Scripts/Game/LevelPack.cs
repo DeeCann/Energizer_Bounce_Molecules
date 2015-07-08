@@ -7,11 +7,17 @@ public class LevelPack : MonoBehaviour {
 	public Transform Back;
 
 	public void OpenPanel() {
-		LevelStandardPanel.GetComponent<Animator>().SetBool("FadeIn", false);
-		LevelStandardPanel.GetComponent<Animator>().SetBool("FadeOut", true);
+		if(PlayerPrefs.HasKey("LevelPacksUnlocked")) {
+			LevelStandardPanel.GetComponent<Animator>().SetBool("FadeIn", false);
+			LevelStandardPanel.GetComponent<Animator>().SetBool("FadeOut", true);
 
-		GetComponent<Animator>().SetBool("FadeOut", false);
-		GetComponent<Animator>().SetBool("FadeIn", true);
+			GetComponent<Animator>().SetBool("FadeOut", false);
+			GetComponent<Animator>().SetBool("FadeIn", true);
+
+			GetComponent<AudioSource>().Play();
+		} else {
+			GameControler.Instance.LoadLevel("UnlockAllLevels");
+		}
 	}
 
 	public void ClosePanel() {
