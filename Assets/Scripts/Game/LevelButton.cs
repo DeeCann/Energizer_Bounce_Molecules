@@ -34,7 +34,6 @@ public class LevelButton : MonoBehaviour {
 	}
 
 	public void PlayLevel() {
-		Debug.Log("platy");
 		if(!_isLocked) {
 			GameControler.Instance.LoadLevel(LevelName.ToString());
 			GetComponent<AudioSource>().clip = _properTouch;

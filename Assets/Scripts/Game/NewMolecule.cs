@@ -44,7 +44,8 @@ public class NewMolecule : MonoBehaviour {
 				break;
 		}
 
-		SFXControler.Instance.VolumeDown();
+		if(SFXControler.Instance != null)
+			SFXControler.Instance.VolumeDown();
 		GetComponent<Animator>().SetBool("Play", true);
 		GetComponent<AudioSource>().Play();
 	}

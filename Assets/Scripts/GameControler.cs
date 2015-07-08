@@ -27,7 +27,6 @@ public class GameControler : MonoBehaviour {
 	}
 
 	void Start() {
-		//PlayerPrefs.DeleteAll();
 		FadeScreen.Instance.StartScene();
 
 		StartCoroutine(StartLevel());
@@ -38,7 +37,13 @@ public class GameControler : MonoBehaviour {
 		if(Application.loadedLevel > 1 && PlayerPrefs.HasKey("LastMoleculeSelected"))
 			ChangeMolecule(PlayerPrefs.GetString("LastMoleculeSelected"));
 
-		SFXControler.Instance.VolumeUp();
+		if(SFXControler.Instance != null)
+			SFXControler.Instance.VolumeUp();
+	}
+
+	public void ClearAllPrefs() {
+		PlayerPrefs.DeleteAll();
+		LoadLevel("Start");
 	}
 
 	public void LoadLevel(string level) {
@@ -60,7 +65,6 @@ public class GameControler : MonoBehaviour {
 
 	public void LevelSuccess() {
 		PlayerPrefs.SetInt("Basic_"+(System.Convert.ToInt16( Application.loadedLevelName.Substring(6))+1), 1);
-		Debug.Log(System.Convert.ToInt16( Application.loadedLevelName.Substring(6)));
 		if(System.Convert.ToInt16( Application.loadedLevelName.Substring(6)) == 10)
 			LevelsComplete.Instance.LevelsCompleted();
 		else

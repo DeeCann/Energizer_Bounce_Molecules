@@ -26,19 +26,20 @@ public class EndHole : MonoBehaviour {
 
 	IEnumerator LerpMoleculeToHole() {
 		while(Vector3.Distance(transform.position, _molecule.position) > 0.05f) {
+
 			GameControler.Instance.IsLevelSuccess = true;
 			_molecule.position = Vector3.Lerp(_molecule.position, transform.position, Time.deltaTime * 4);
 
 			yield return 0;
 		}
-
+		_molecule.position = transform.position;
 		StartCoroutine(ScaleDownMolecule());
 	}
 
 	IEnumerator ScaleDownMolecule() {
 		while(_molecule.localScale.magnitude > 0.01f) {
 			_molecule.localScale = Vector3.Lerp(_molecule.localScale, Vector2.zero, Time.deltaTime * 2);
-			
+
 			yield return 0;
 		}
 
