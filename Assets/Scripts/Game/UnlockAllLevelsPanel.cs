@@ -43,6 +43,7 @@ public class UnlockAllLevelsPanel : MonoBehaviour {
 		StartCoroutine(FadeInCanvas(_successCodeUnlockPanel.GetComponent<CanvasGroup>()));
 
 		PlayerPrefs.SetInt("LevelPacksUnlocked", 1);
+		PlayerPrefs.SetInt("Pack1_11", 1);
 	}
 
 	public void SuccessBuyUnlockPanel() {
@@ -50,6 +51,7 @@ public class UnlockAllLevelsPanel : MonoBehaviour {
 		StartCoroutine(FadeInCanvas(_successBuyUnlockPanel.GetComponent<CanvasGroup>()));
 
 		PlayerPrefs.SetInt("LevelPacksUnlocked", 1);
+		PlayerPrefs.SetInt("Pack1_11", 1);
 	}
 
 

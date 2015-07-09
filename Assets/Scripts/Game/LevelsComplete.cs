@@ -21,4 +21,8 @@ public class LevelsComplete : MonoBehaviour {
 		GetComponent<Animator>().SetBool("Play", true);
 		GetComponent<AudioSource>().Play();
 	}
+
+	public void UnlockPanel() {
+		GameControler.Instance.LoadLevel("UnlockAllLevels");
+	}
 }

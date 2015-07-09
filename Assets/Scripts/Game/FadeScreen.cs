@@ -58,10 +58,22 @@ public class FadeScreen : MonoBehaviour {
 		
 		fadeImage.color = Color.black; 
 
-		if(_sceneToLoadName != null)
-			Application.LoadLevel(_sceneToLoadName);
+		if(_sceneToLoadName != null) {
+			if(Application.CanStreamedLevelBeLoaded(_sceneToLoadName))
+				Application.LoadLevel(_sceneToLoadName);
+			else
+				Application.LoadLevel(0);
 
-		if(_sceneToLoadId != -1)
-			Application.LoadLevel(_sceneToLoadId);
+			yield break;
+		}
+
+		if(_sceneToLoadId != -1) {
+			if(Application.CanStreamedLevelBeLoaded(_sceneToLoadId))
+				Application.LoadLevel(_sceneToLoadId);
+			else
+				Application.LoadLevel(0);
+			
+			yield break;
+		}
 	}
 }
