@@ -44,6 +44,7 @@ public class UnlockAllLevelsPanel : MonoBehaviour {
 
 		PlayerPrefs.SetInt("LevelPacksUnlocked", 1);
 		PlayerPrefs.SetInt("Pack1_11", 1);
+		PlayerPrefs.SetInt("Pack2_26", 1);
 	}
 
 	public void SuccessBuyUnlockPanel() {
@@ -52,6 +53,7 @@ public class UnlockAllLevelsPanel : MonoBehaviour {
 
 		PlayerPrefs.SetInt("LevelPacksUnlocked", 1);
 		PlayerPrefs.SetInt("Pack1_11", 1);
+		PlayerPrefs.SetInt("Pack2_26", 1);
 	}
 
 
