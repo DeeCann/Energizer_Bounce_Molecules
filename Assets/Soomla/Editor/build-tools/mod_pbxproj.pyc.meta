@@ -1,31 +1,4 @@
 fileFormatVersion: 2
-guid: e838bfeed775741bdb5b9fd21877367c
-labels:
-- soomla
-- store
-- storekit
-- native
-- unibill
-- prime31
-- codiwans
-- simpleiap
-- iap
-- in app billing
-- billing
-- iap
-- in app purchase
-- coins
-- fraud
-- receipt
-- verification
-- monetization
-- OpenIAB
-- photon
-- builder
-- in app purchase builder
-- stan
-- stans assets
+guid: 7abb3fdb2a9804373a80dd0dec43eac5
 DefaultImporter:
   userData: 
-  assetBundleName: 
-  assetBundleVariant: 
