@@ -29,7 +29,10 @@ public class Webservice : MonoBehaviour {
 		if(_receiving) {
 			if(!IsCodeCorrect) {
 				AlertImage.enabled = true;
+				ErrorMsg.enabled = true;
 			} else {
+				PlayerPrefs.SetInt("HasCode", 1);
+				GameControler.Instance.ReloadLevel();
 				Debug.Log("ok");
 			}
 
@@ -42,6 +45,7 @@ public class Webservice : MonoBehaviour {
 	public void Send() {
 		if(Code.text.Length == 0) {
 			ErrorMsg.text = _errMessage[2];
+			ErrorMsg.enabled = true;
 			AlertImage.enabled = true;
 			return;
 		} 

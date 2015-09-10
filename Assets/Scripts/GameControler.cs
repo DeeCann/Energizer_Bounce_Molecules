@@ -2,10 +2,13 @@
 using System.Collections;
 
 public class GameControler : MonoBehaviour {
+	public GameObject CodePanel;
+
 	private bool _levelSuccess = false;
 	private bool _levelStarted = false;
 	
 	private int _collisionsCounter = 0;
+	private static int _packReloadCounter = 0;
 
 	private Transform _myMolecule;
 
@@ -20,6 +23,16 @@ public class GameControler : MonoBehaviour {
 	}
 
 	void Awake() {
+		if(!PlayerPrefs.HasKey("HasCode")) {
+			if(Application.loadedLevel == 13)
+				_packReloadCounter++;
+
+			if(_packReloadCounter >= 4) {
+				CodePanel.SetActive(true);
+				_packReloadCounter = 0;
+			}
+		}
+
 		_levelStarted = false;
 		_instance = this;
 
@@ -70,6 +83,7 @@ public class GameControler : MonoBehaviour {
 
 		if(System.Convert.ToInt16( Application.loadedLevelName.Substring(6)) == 10) {
 			PlayerPrefs.SetInt("LevelPacksUnlocked", 1);
+			PlayerPrefs.SetInt("Pack1_11", 1);
 			LevelsComplete.Instance.LevelsCompleted();
 		}
 		else
@@ -114,6 +128,10 @@ public class GameControler : MonoBehaviour {
 		get {
 			return _myMolecule;
 		}
+	}
+
+	public void CloseCodePanel() {
+		CodePanel.SetActive(false);
 	}
 
 	private void CheckForUnlockMolecule() {
