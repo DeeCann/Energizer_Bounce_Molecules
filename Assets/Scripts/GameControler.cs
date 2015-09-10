@@ -68,8 +68,10 @@ public class GameControler : MonoBehaviour {
 		if(Application.CanStreamedLevelBeLoaded(nextLevelName))
 			PlayerPrefs.SetInt(Application.loadedLevelName.Substring(0,6)+(System.Convert.ToInt16( Application.loadedLevelName.Substring(6))+1), 1);
 
-		if(System.Convert.ToInt16( Application.loadedLevelName.Substring(6)) == 10)
+		if(System.Convert.ToInt16( Application.loadedLevelName.Substring(6)) == 10) {
+			PlayerPrefs.SetInt("LevelPacksUnlocked", 1);
 			LevelsComplete.Instance.LevelsCompleted();
+		}
 		else
 			CheckForUnlockMolecule();
 	}
