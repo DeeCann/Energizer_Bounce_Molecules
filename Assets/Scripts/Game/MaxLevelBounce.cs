@@ -7,7 +7,13 @@ public class MaxLevelBounce : MonoBehaviour {
 	private int _maxBounce = 3;
 	
 	void Start () {	
-		GameControler.Instance.CollisionCounter = _maxBounce;
+		if(System.Convert.ToInt16( Application.loadedLevelName.Substring(6)) == 11) {
+			if(PlayerPrefs.HasKey("UnlockMaxBounce"))
+				GameControler.Instance.CollisionCounter = PlayerPrefs.GetInt("UnlockMaxBounce");
+			else
+				GameControler.Instance.CollisionCounter = 0;
+		} else 
+			GameControler.Instance.CollisionCounter = _maxBounce;
 	}
 
 	void Update () {		

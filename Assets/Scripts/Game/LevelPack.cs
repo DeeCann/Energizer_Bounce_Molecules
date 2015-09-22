@@ -15,6 +15,9 @@ public class LevelPack : MonoBehaviour {
 			GetComponent<Animator>().SetBool("FadeIn", true);
 
 			GetComponent<AudioSource>().Play();
+		} else {
+			LevelStandardPanel.FindChild("PremiumPacks").transform.FindChild("Info").gameObject.SetActive(true);
+			LevelStandardPanel.FindChild("PremiumPacks").transform.FindChild("Info").GetComponent<AudioSource>().Play();
 		}
 	}
 

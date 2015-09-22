@@ -32,6 +32,7 @@ public class Webservice : MonoBehaviour {
 				ErrorMsg.enabled = true;
 			} else {
 				PlayerPrefs.SetInt("HasCode", 1);
+				PlayerPrefs.SetInt("UnlockMaxBounce", 2);
 				GameControler.Instance.ReloadLevel();
 				Debug.Log("ok");
 			}

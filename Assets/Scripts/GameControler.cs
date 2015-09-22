@@ -24,7 +24,7 @@ public class GameControler : MonoBehaviour {
 
 	void Awake() {
 		if(!PlayerPrefs.HasKey("HasCode")) {
-			if(Application.loadedLevel == 13)
+			if(Application.loadedLevel == 12)
 				_packReloadCounter++;
 
 			if(_packReloadCounter >= 4) {
@@ -66,7 +66,7 @@ public class GameControler : MonoBehaviour {
 	public void LoadNextLevel() {
 		PlayerPrefs.DeleteKey("LastMoleculeSelected");
 
-		if(Application.loadedLevel == 12)
+		if(Application.loadedLevel == 11)
 			FadeScreen.Instance.EndScene(null, 1);
 		else
 			FadeScreen.Instance.EndScene(null, Application.loadedLevel+1);
@@ -84,6 +84,12 @@ public class GameControler : MonoBehaviour {
 		if(System.Convert.ToInt16( Application.loadedLevelName.Substring(6)) == 10) {
 			PlayerPrefs.SetInt("LevelPacksUnlocked", 1);
 			PlayerPrefs.SetInt("Pack1_11", 1);
+			LevelsComplete.Instance.LevelsCompleted();
+		} else if(System.Convert.ToInt16( Application.loadedLevelName.Substring(6)) == 25) {
+			PlayerPrefs.SetInt("Pack2_26", 1);
+			LevelsComplete.Instance.LevelsCompleted();
+		} else if(System.Convert.ToInt16( Application.loadedLevelName.Substring(6)) == 40) {
+			PlayerPrefs.SetInt("Pack3_41", 1);
 			LevelsComplete.Instance.LevelsCompleted();
 		}
 		else
