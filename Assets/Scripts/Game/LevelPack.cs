@@ -16,7 +16,8 @@ public class LevelPack : MonoBehaviour {
 
 			GetComponent<AudioSource>().Play();
 		} else {
-			GameControler.Instance.LoadLevel("UnlockAllLevels");
+			//if(PlayerPrefs.HasKey("CanUnlock"))
+				GameControler.Instance.LoadLevel("UnlockAllLevels");
 		}
 	}
 

@@ -23,6 +23,11 @@ public class LevelsComplete : MonoBehaviour {
 	}
 
 	public void UnlockPanel() {
-		GameControler.Instance.LoadLevel("UnlockAllLevels");
+		if(!PlayerPrefs.HasKey("LevelPacksUnlocked")) {
+			PlayerPrefs.SetInt("CanUnlock", 1);
+			GameControler.Instance.LoadLevel("UnlockAllLevels");
+		} else {
+			GameControler.Instance.LoadLevel("Start");
+		}
 	}
 }
