@@ -10,8 +10,8 @@ public class Webservice : MonoBehaviour {
 	public Text ErrorMsg;
 	public Image AlertImage;
 	
-	private string[] _errMessage = new string[]{ "Your code has been already used", "Your code is incorrect", "Code is empty" };
-	
+	private string[] _errMessage = new string[]{ "Your code has been already used", "Your code is incorrect", "Code is empty", "There was a connection problem. Try again." };
+
 	private JSONObject _webserwisResponse; 
 	private string jsonBoolResponse;
 	private string jsonCodeResponse;
@@ -65,6 +65,8 @@ public class Webservice : MonoBehaviour {
 			else {
 				if(jsonCodeResponse == "201")
 					ErrorMsg.text = _errMessage[1];
+				else if (jsonCodeResponse == "400")
+					ErrorMsg.text = _errMessage[3];
 				else
 					ErrorMsg.text = _errMessage[0];
 				return false;
@@ -88,19 +90,26 @@ public class Webservice : MonoBehaviour {
 		print("Received ...");
 		
 		_webserwisResponse = new JSONObject(request.text);
-		
-		Debug.Log(_webserwisResponse);
-		foreach(JSONObject item in _webserwisResponse.list)
-		{
-			if (item.type == JSONObject.Type.BOOL)
-				jsonBoolResponse = item.ToString();
+
+		if(_webserwisResponse.IsNull) {
+			_connecting = false;
+			_receiving = true;
+			jsonCodeResponse = "400";
+		} else {
+			foreach(JSONObject item in _webserwisResponse.list)
+			{
+				if (item.type == JSONObject.Type.BOOL)
+					jsonBoolResponse = item.ToString();
+				
+				if (item.type == JSONObject.Type.NUMBER)
+					jsonCodeResponse = item.ToString();
+			}
 			
-			if (item.type == JSONObject.Type.NUMBER)
-				jsonCodeResponse = item.ToString();
+
+			_connecting = false;
+			_receiving = true;
 		}
-		
+
 		Splash.gameObject.SetActive(false);
-		_connecting = false;
-		_receiving = true;
 	}
 }
