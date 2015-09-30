@@ -8,6 +8,7 @@ public class EndHole : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other) {
 		if(other.tag == Tags.Molecule) {
 			_molecule = other.transform;
+			_molecule.GetComponent<Molecule>().IsInEndHole = true;
 
 			_molecule.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
 			StartCoroutine(LerpMoleculeToHole());
@@ -26,7 +27,7 @@ public class EndHole : MonoBehaviour {
 
 	IEnumerator LerpMoleculeToHole() {
 		while(Vector3.Distance(transform.position, _molecule.position) > 0.05f) {
-
+			_molecule.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
 			GameControler.Instance.IsLevelSuccess = true;
 			_molecule.position = Vector3.Lerp(_molecule.position, transform.position, Time.deltaTime * 4);
 
