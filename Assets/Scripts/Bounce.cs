@@ -20,6 +20,11 @@ public class Bounce : MonoBehaviour {
 
 	void FixedUpdate () {
 		if(GameControler.Instance.IsLevelStarted) {
+			if(Mathf.Abs(transform.position.x) > 20 || Mathf.Abs(transform.position.y) > 20) {
+				GameControler.Instance.LevelFailed();
+				return;
+			}
+
 			if(InputEventHandler.IsStartTouchAction && !_settingStartParams) {
 				_touchlimiter.SetBool("Play", true);
 				_startTouchTime = Time.time;

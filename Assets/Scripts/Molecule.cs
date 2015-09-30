@@ -11,6 +11,8 @@ public class Molecule : MonoBehaviour {
 	private Vector2 _rollingBandDirection = Vector2.zero;
 	private bool _changeVelocityByRollingBand = false;
 
+	private bool _enteredEndHole = false;
+
     void Awake() {
 		_moleculeAnimator = GetComponent<Animator>();
 		_randomBlickTime = Random.Range(3, 6);
@@ -71,7 +73,7 @@ public class Molecule : MonoBehaviour {
 			StartCoroutine(DecreaseVelocity());
 		}
 
-		if(other.GetComponent<RollingBand>()) {
+		if(other.GetComponent<RollingBand>() && !_enteredEndHole) {
 			_rollingBandDirection = other.transform.up;
 			_changeVelocityByRollingBand = true;
 			StartCoroutine(ChangeVelocityByRollingBand());
@@ -85,6 +87,17 @@ public class Molecule : MonoBehaviour {
 
 		if(other.GetComponent<RollingBand>())	
 			_changeVelocityByRollingBand = false;
+	}
+
+	public bool IsInEndHole {
+		set {
+			_enteredEndHole = value;
+			Debug.Log(_enteredEndHole);
+		}
+
+		get {
+			return _enteredEndHole;
+		}
 	}
 
 	IEnumerator RandomBlick() {
